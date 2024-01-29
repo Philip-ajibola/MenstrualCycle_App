@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 public class UserClass {
@@ -116,8 +116,8 @@ public class UserClass {
                         ||   Hey Hello Welcome To MyMenstrualCycle Tracker ||
                         =====================================================
                         What's Your Goal ??
-                           (1) Tracking My Menstrual Cycle (: 
-                           (2) Trying To Conceive :(
+                           [(1)] Tracking My Menstrual Cycle (: 
+                           [(2)] Trying To Conceive :(
                           
                         ======================================================   
                         """);
@@ -132,6 +132,8 @@ public class UserClass {
         switch (userAnswer) {
             case 1:
                 int userAnswer1 = 0;
+                System.out.println("Hey Hello Enter Your Name  ");
+                String name = input.nextLine();
                 setDate();
                 System.out.println();
                 collectMenstrualCycleInput();
@@ -160,14 +162,15 @@ public class UserClass {
                     System.out.println();
                     System.out.printf("""
                             ============================================================================
-                            Your Menstrual Cycle Flow..                                     
+                            Hello!!! %s
+                            Your Menstrual Cycle Flow..                                    
                                 your next flow is predicted to Start on the %s.      
                                        ------------------------------------------------------------------
                                             your ovulation is predicted  to be on the %s.   
                                             -------------------------------------------------------------
                                                    your next flow is predicted end on the %s.          
                             =============================================================================
-                            """,menstrualCycle.getNextFlow(),menstrualCycle.displayOvulationPeriod(),menstrualCycle.getWhenPeriodIsEnding());
+                            """,name,menstrualCycle.getNextFlow(),menstrualCycle.displayOvulationPeriod(),menstrualCycle.getWhenPeriodIsEnding());
                     System.out.println("""
                             
                             Note That THere are Some Factors that makes our Menstrual Cycle Vary....
