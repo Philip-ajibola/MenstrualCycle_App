@@ -107,6 +107,15 @@ public class UserClass {
       }
     }
     public void displayOutPut() {
+        System.out.println("""
+                Hey Hello Welcome To My Menstrual Cycle Tracker 
+                    With Over 200 Million Users.....
+                    
+                    Enter Your Name....
+                    
+                """);
+        String name = input.nextLine();
+
         boolean condition = true;
         int userAnswer = 0;
         while (condition) {
@@ -132,8 +141,6 @@ public class UserClass {
         switch (userAnswer) {
             case 1:
                 int userAnswer1 = 0;
-                System.out.println("Hey Hello Enter Your Name  ");
-                String name = input.nextLine();
                 setDate();
                 System.out.println();
                 collectMenstrualCycleInput();
