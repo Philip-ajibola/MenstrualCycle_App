@@ -11,7 +11,7 @@ class MenstrualCycleCalculatorClassTest {
         menstrualCalculator.setNumberOfDaysForFlow(7);
         int result = menstrualCalculator.getNumberOfDaysForFlow();
         assertEquals(7,result);
-      //  menstrualCalculator.setNumberOfDaysForFlow(28);
+
 
         assertThrows(IllegalArgumentException.class, () -> menstrualCalculator.setNumberOfDaysForFlow(28));
     }
@@ -32,9 +32,6 @@ class MenstrualCycleCalculatorClassTest {
     void getNextFlow() {
         DateClass date = new DateClass(2,1,2024);
         MenstrualCycleCalculatorClass menstrualCalculator = new MenstrualCycleCalculatorClass(date);
-          //  date.setYear(2023);
-         //   date.setMonth(12);
-        //    date.setDay(25);
         menstrualCalculator.setNumberOfDaysCycleLast(22);
         String result = menstrualCalculator.getNextFlow();
         assertEquals("24 January 2024",result);
@@ -53,21 +50,21 @@ class MenstrualCycleCalculatorClassTest {
 
     @Test
     void getMonth() {
-        DateClass date = new DateClass(23,12,2022);
+        DateClass date = new DateClass(23,12,2023);
         int result = date.getMonth();
         assertEquals(12,result);
     }
 
     @Test
     void getYear() {
-        DateClass date = new DateClass(23,12,2022);
+        DateClass date = new DateClass(23,12,2023);
         int result = date.getYear();
-        assertEquals(2022,result);
+        assertEquals(2023,result);
     }
 
     @Test
     void getDay() {
-        DateClass date = new DateClass(23,12,2022);
+        DateClass date = new DateClass(23,12,2023);
         int result = date.getDay();
         assertEquals(23,result);
     }
