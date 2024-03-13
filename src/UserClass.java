@@ -12,14 +12,12 @@ public class UserClass {
                   try {
                     System.out.println("Enter the date when your previous Period stated (dd/mm/yyyy)");
                     String lastPeriodDate = input.next();
-                    validateDateFormat(lastPeriodDate);
                     String[] array = lastPeriodDate.split("/");
                     checkUserDateFormat(array);
                     date = new DateClass(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
                     condition = false;
                  }catch (Exception e) {
                     System.out.println(e.getMessage());
-                    input.next();
                   }
                 }
     }
@@ -42,7 +40,6 @@ public class UserClass {
               }
           } catch (InputMismatchException e) {
               System.out.println("Enter A Valid Input");
-              input.next();
           }
       }
       conditionTwo = true;
@@ -57,11 +54,10 @@ public class UserClass {
                 System.out.println("IllegalArgumentException: " + e.getMessage());
                 System.out.println("Thank You For Using Our App,But We Cant Help\n Your Situation Is A Critical one ");
                 conditionTwo = false;
-              //  System.exit(0);
+                System.exit(0);
             }
         } catch (InputMismatchException e) {
             System.out.println("Enter A Valid Input");
-            input.next();
         }
       }
     }
@@ -154,7 +150,7 @@ public class UserClass {
                     int userAnswer2 = input.nextInt();
                     switch(userAnswer2) {
                         case 1:
-                            System.out.printf("""
+                            System.out.print("""
                                     DISCLAIMER: This is for educational purpose only!!!!....
                                                                         
                                         What Does A Safe Period Means???
@@ -252,6 +248,11 @@ public class UserClass {
                                 break;
                         }
                 break;
+            default:
+                System.out.println("Wrong Input \nEnter A Valid Input Please");
+                System.out.println();
+                displayOutPut();
+
 
 
         }
@@ -259,7 +260,7 @@ public class UserClass {
     }
     private static void checkUserDateFormat(String[] array){
         for(String string: array){
-            if(!string.matches("[0-9]+"))throw new IllegalArgumentException("Invalid Input");
+            if(!string.matches("[0-9]+"))throw new IllegalArgumentException("Invalid DateFormat");
         }
     }
     private static void validateDateFormat(String date){

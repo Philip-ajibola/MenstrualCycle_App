@@ -1,5 +1,7 @@
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.InputMismatchException;
+
 public class MenstrualCycleCalculatorClass {
     private   DateClass date ;
     private  final Calendar calendar= Calendar.getInstance();
@@ -37,11 +39,10 @@ public class MenstrualCycleCalculatorClass {
         }else{        this.numberOfDaysForFlow = numberOfFlows;}
 
     }
-
     public void setNumberOfDaysCycleLast(int rangeOfCycle){
-        if(rangeOfCycle<21 || rangeOfCycle>35){
-            throw new IllegalArgumentException("I think you need to see a doctor, sorry we can't help ");
-        }else{this.numberOfDaysCycleLast = rangeOfCycle;}
+        if(rangeOfCycle<=0)throw new InputMismatchException("You Can't Have A negative CycleRange\n Enter A valid cycle");
+        if(rangeOfCycle<21 || rangeOfCycle>35) throw new IllegalArgumentException("I think you need to see a doctor, sorry we can't help ");
+        this.numberOfDaysCycleLast = rangeOfCycle;
 
     }
     public int getOvulationPeriod(){
@@ -68,55 +69,55 @@ public class MenstrualCycleCalculatorClass {
 
          switch(numberOfDaysCycleLast){
              case 21:
-                 ovulationPeriod = 21 -14;
+                 ovulationPeriod = 21 - 28 + 14;
                  break;
              case 22:
-                 ovulationPeriod = 22 - 14;
+                 ovulationPeriod = 22 - 28 + 14;
                  break;
              case 23:
-                 ovulationPeriod = 23 - 14;
+                 ovulationPeriod = 23 - 28 + 14;
                  break;
              case 24:
-                 ovulationPeriod = 24 - 14;
+                 ovulationPeriod = 24 - 28 + 14;
                  break;
              case 25:
-                 ovulationPeriod = 25 - 14;
+                 ovulationPeriod = 25 - 28 + 14;
                  break;
              case 26:
-                 ovulationPeriod = 26 - 14;
+                 ovulationPeriod = 26 - 28 + 14;
                  break;
              case 27:
-                 ovulationPeriod = 27 - 14;
+                 ovulationPeriod = 27 - 28 + 14;
                  break;
              case 28:
                  ovulationPeriod = 28 - 14;
                  break;
              case 29:
-                 ovulationPeriod = 29 - 14;
+                 ovulationPeriod = 29 -28 + 14;
                  break;
              case 30:
-                 ovulationPeriod = 30 - 14;
+                 ovulationPeriod = 30 - 28 + 14;
                  break;
              case 31:
-                 ovulationPeriod = 31 - 14;
+                 ovulationPeriod = 31 - 28 + 14;
                  break;
              case 32:
-                 ovulationPeriod = 32 - 14;
+                 ovulationPeriod = 32 - 28 + 14;
                  break;
              case 33:
-                 ovulationPeriod = 33 - 14;
+                 ovulationPeriod = 33 - 28 + 14;
                  break;
              case 34:
-                 ovulationPeriod = 34 - 14;
+                 ovulationPeriod = 34 - 28 + 14;
                  break;
              case 35:
-                 ovulationPeriod = 35 - 14;
+                 ovulationPeriod = 35 - 28 +  14;
+                 break;
              default:
                  return "You need to go see a doctor ";
          }
                 setCalendar();
-                calendar.add(Calendar.DAY_OF_MONTH,numberOfDaysCycleLast);
-                calendar.add(Calendar.DAY_OF_MONTH,-ovulationPeriod);
+                calendar.add(Calendar.DAY_OF_MONTH,ovulationPeriod);
         return myDateFormat.format(calendar.getTime());
 
     }
