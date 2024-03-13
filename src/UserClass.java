@@ -77,9 +77,7 @@ public class UserClass {
                   System.out.println("IllegalArgumentException: " + e.getMessage());
                   System.out.println("Thank You For Using Our App,But We Cant Help\n Your Situation Is A Critical one ");
                   conditionTwo = false;
-                 // System.exit(0);
-                  conditionTwo = false;
-
+                  System.exit(0);
               }
           } catch (InputMismatchException e) {
               System.out.println("Enter A Valid Input");
@@ -126,7 +124,7 @@ public class UserClass {
                 System.out.println();
                 System.out.printf("""
                         =====================================================
-                        || Hey %s :)                                       ||
+                         Hey %s :)                                      
                         || Welcome To MyMenstrualCycle Tracker             ||
                         =====================================================
                         What's Your Goal ??
@@ -161,17 +159,6 @@ public class UserClass {
                     System.out.println(" Our prediction might not be so accurate but we will give you the best prediction ");
                 }
                 System.out.println();
-                System.out.println("""
-                        __________________________________________________
-                        My MenstrualCycle Like To send You A notifications
-                          Notification May include Alert,Sounds, and icon
-                          badges. You Can decade To Set it Up Later.
-                          
-                              |(1) Allow|        |(2) Don't Allow|
-                        --------------------------------------------------
-                        """);
-                    userAnswer1 = input.nextInt();
-                    System.out.println();
                     System.out.printf("""
                             ============================================================================
                             Hello!!! %s
