@@ -111,25 +111,24 @@ public class UserClass {
                 Hey Hello Welcome To My Menstrual Cycle Tracker 
                     With Over 200 Million Users.....
                     
-                    Enter Your Name....
-                    
+                    Enter Your Name... 
                 """);
         String name = input.nextLine();
-
         boolean condition = true;
         int userAnswer = 0;
         while (condition) {
             try {
-                System.out.println("""
+                System.out.printf("""
                         =====================================================
-                        ||   Hey Hello Welcome To MyMenstrualCycle Tracker ||
+                        || Hey %s :)                                       ||
+                        || Welcome To MyMenstrualCycle Tracker             ||
                         =====================================================
                         What's Your Goal ??
                            [(1)] Tracking My Menstrual Cycle (: 
                            [(2)] Trying To Conceive :(
                           
-                        ======================================================   
-                        """);
+                        ======================================================\n   
+                        """,name);
                 userAnswer = input.nextInt();
                 condition = false;
             } catch (InputMismatchException e) {
