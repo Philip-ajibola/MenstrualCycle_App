@@ -109,7 +109,21 @@ public class UserClass {
                         Is Your Menstrual Cycle Regular??
                            [(1) yes ]     [(2) no ]
                         """);
-                int userInput = input.nextInt();
+                condition = true;
+                int userInput = 0;
+                while(condition) {
+                    try {
+                        userInput = input.nextInt();
+                        while (userInput>2 || userInput<1){
+                            System.out.println("Enter Valid Number 1 or 2");
+                            userInput = input.nextInt();
+                        }
+                        condition = false;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        input.next();
+                    }
+                }
                 if(userInput==1){
                     System.out.println("Okay Great Our prediction Should be 70% - 80% accurate ");
                 }else{
@@ -147,7 +161,21 @@ public class UserClass {
                          
                             """);
                     System.out.println();
-                    int userAnswer2 = input.nextInt();
+                    condition = true;
+                    int userAnswer2 = 0;
+                    while(condition){
+                    try {
+                        userAnswer2 = input.nextInt();
+                        while (userAnswer2>4 || userAnswer2<1){
+                            System.out.println("Enter Valid Number 1 or 2");
+                            userAnswer2 = input.nextInt();
+                        }
+                        condition = false;
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                        input.next();
+                    }
+                    }
                     switch(userAnswer2) {
                         case 1:
                             System.out.print("""
@@ -166,9 +194,17 @@ public class UserClass {
                                             [(1) Yes!!]      [(2) No !!!]
                                     """);
                             System.out.println();
+                            condition = true;
+                            while (condition){
+                            try{
                             int userAnswer3 = input.nextInt();
                             if (userAnswer3 == 1) {
                                 System.out.printf("Your Safe Period Is predicted to be Between %s during Your Menstrual Cycle days ", menstrualCycle.getSafePeriodForSex());
+                            }
+                            condition = false;
+                            }catch (Exception e){
+                                System.out.println(e.getMessage());
+                            }
                             }
                             break;
                         case 2:
