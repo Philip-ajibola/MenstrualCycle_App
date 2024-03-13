@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 public class UserClass {
     private DateClass date;
+    private static  String name;
     private static  MenstrualCycleCalculatorClass menstrualCycle;
     private static final Scanner input = new Scanner(System.in);
 
@@ -39,7 +40,8 @@ public class UserClass {
                   System.exit(0);
               }
           } catch (InputMismatchException e) {
-              System.out.println("Enter A Valid Input");
+              System.out.println(e.getMessage());
+              input.next();
           }
       }
       conditionTwo = true;
@@ -58,22 +60,15 @@ public class UserClass {
             }
         } catch (InputMismatchException e) {
             System.out.println("Enter A Valid Input");
+            input.next();
         }
       }
     }
+    public void mainApp(){
+        displayHeadings();
+        displayOutPut();
+    }
     public void displayOutPut() {
-        System.out.println("""
-                Hey Hello Welcome To My Menstrual Cycle Tracker 
-                    With Over 200 Million Users.....
-                    
-                    Enter Your Name... 
-                """);
-        String name = input.nextLine();
-        if(name.isEmpty() || !name.matches("[a-zA-Z]+")){
-            System.out.println("Your Name Should Consist Of Alphabetical Letter Alone ");
-            System.out.println();
-            displayOutPut();
-        }
         boolean condition = true;
         int userAnswer = 0;
         while (condition) {
@@ -87,11 +82,22 @@ public class UserClass {
                         What's Your Goal ??
                            [(1)] Tracking My Menstrual Cycle (: 
                            [(2)] Trying To Conceive :(
-                          
+                           [(3)] ExitApp
                         ======================================================\n   
                         """,name);
-                userAnswer = input.nextInt();
-                condition = false;
+              //  while (condition) {
+                    try {
+                        userAnswer = input.nextInt();
+                        while(userAnswer>3 || userAnswer<1){
+                            System.out.println("Enter Either One Or Two ");
+                            userAnswer = input.nextInt();
+                        }
+                        condition = false;
+                    } catch (Exception e) {
+                        System.out.println("Invalid Input");
+                        input.next();
+                    }
+              //  }
             } catch (InputMismatchException e) {
                 System.out.println("Enter A Valid Input \n Enter one out of the numbers shown to you (1 or 2)");
                 input.next();
@@ -120,7 +126,7 @@ public class UserClass {
                         }
                         condition = false;
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Invalid Input\n Enter Valid Input");
                         input.next();
                     }
                 }
@@ -167,12 +173,12 @@ public class UserClass {
                     try {
                         userAnswer2 = input.nextInt();
                         while (userAnswer2>4 || userAnswer2<1){
-                            System.out.println("Enter Valid Number 1 or 2");
+                            System.out.println("Enter Valid Number (1 - 4)");
                             userAnswer2 = input.nextInt();
                         }
                         condition = false;
                     }catch (Exception e){
-                        System.out.println(e.getMessage());
+                        System.out.println("Invalid Input\n Enter Valid Input");
                         input.next();
                     }
                     }
@@ -198,12 +204,31 @@ public class UserClass {
                             while (condition){
                             try{
                             int userAnswer3 = input.nextInt();
+                            while(userAnswer3>2 || userAnswer3<1){
+                                System.out.println("Enter 1 Or 2 ");
+                                userAnswer3 = input.nextInt();
+                            }
                             if (userAnswer3 == 1) {
                                 System.out.printf("Your Safe Period Is predicted to be Between %s during Your Menstrual Cycle days ", menstrualCycle.getSafePeriodForSex());
-                            }
+                                System.out.println("[<1>] Back              [<2>] ExitApp");
+                                String userResponse = input.next();
+                                while (!userResponse.matches("[1-2]")){
+                                    System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit App");
+                                    userResponse = input.next();
+                                }
+                                switch (userResponse){
+                                    case "1":
+                                        displayOutPut();
+                                        break;
+                                    case "2":
+                                        System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
+                                        break;
+                                }
+                            }else{displayOutPut();}
                             condition = false;
                             }catch (Exception e){
-                                System.out.println(e.getMessage());
+                                System.out.println("Invalid Input\n Enter Valid Input");
+                                input.next();
                             }
                             }
                             break;
@@ -220,6 +245,20 @@ public class UserClass {
                                           there is a very high chance of getting pregnant when you have sex during this period...
                                     """);
                             System.out.printf("\nFor You Your Fertile period should be around %s during Your Menstrual cycle days \n ", menstrualCycle.getSafePeriodToConceive());
+                            System.out.println("[<1>] Back              [<2>] ExitApp");
+                            String userResponse = input.next();
+                            while (!userResponse.matches("[1-2]")){
+                                System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit App");
+                                userResponse = input.next();
+                            }
+                            switch (userResponse){
+                                case "1":
+                                    displayOutPut();
+                                    break;
+                                case "2":
+                                    System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
+                                    break;
+                            }
                             break;
                         case 3:
                             System.out.println("""
@@ -236,7 +275,22 @@ public class UserClass {
                                     4. The luteal phase.
                                                                         
                                     To learn More About Menstrual Cycle read More On Our WebSite....
+                                    
+                                        [<1>] Back           [<2>] ExitApp
                                     """);
+                             userResponse = input.next();
+                            while (!userResponse.matches("[1-2]")){
+                                System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit App");
+                                userResponse = input.next();
+                            }
+                            switch (userResponse){
+                                case "1":
+                                    displayOutPut();
+                                    break;
+                                case "2":
+                                    System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
+                                    break;
+                            }
                             break;
 
                     }
@@ -272,7 +326,7 @@ public class UserClass {
                         """);
                         String userResponse = input.next();
                         while (!userResponse.matches("[1-2]")){
-                            System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit");
+                            System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit App");
                             userResponse = input.next();
                         }
                         switch (userResponse){
@@ -284,15 +338,9 @@ public class UserClass {
                                 break;
                         }
                 break;
-            default:
-                System.out.println("Wrong Input \nEnter A Valid Input Please");
-                System.out.println();
-                displayOutPut();
-
-
-
+            case 3:
+                System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
         }
-        System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
     }
     private static void checkUserDateFormat(String[] array){
         for(String string: array){
@@ -314,5 +362,20 @@ public class UserClass {
             break;
         }
         return condition;
+    }
+
+    private static void displayHeadings(){
+        System.out.println("""
+                Hey Hello Welcome To My Menstrual Cycle Tracker 
+                    With Over 200 Million Users.....
+                    
+                    Enter Your Name... 
+                """);
+         name = input.nextLine();
+        if(name.isEmpty() || !name.matches("[a-zA-Z]+")){
+            System.out.println("Your Name Should Consist Of Alphabetical Letter Alone ");
+            System.out.println();
+            displayHeadings();
+        }
     }
 }

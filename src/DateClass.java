@@ -25,7 +25,7 @@ public class DateClass {
             this.day = day;
         }
             if (year < 2023 || year > 2024) {
-                throw new IllegalArgumentException("Enter valid Year Please ");
+                throw new IllegalArgumentException("Enter valid Year Please\n year must either previous Year of present Year ");
             } else {
                 this.year = year;
             }
