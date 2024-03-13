@@ -114,10 +114,16 @@ public class UserClass {
                     Enter Your Name... 
                 """);
         String name = input.nextLine();
+        if(name.isEmpty() || !name.matches("[a-zA-Z]+")){
+            System.out.println("Your Name Should Consist Of Alphabetical Letter Alone ");
+            System.out.println();
+            displayOutPut();
+        }
         boolean condition = true;
         int userAnswer = 0;
         while (condition) {
             try {
+                System.out.println();
                 System.out.printf("""
                         =====================================================
                         || Hey %s :)                                       ||
@@ -132,9 +138,9 @@ public class UserClass {
                 userAnswer = input.nextInt();
                 condition = false;
             } catch (InputMismatchException e) {
-                System.out.println("Enter A Valid Input \n Enter one of the three numbers shown to you (1,2 or 3)");
+                System.out.println("Enter A Valid Input \n Enter one out of the numbers shown to you (1 or 2)");
+                input.next();
             }
-
 
         }
         switch (userAnswer) {
@@ -281,8 +287,22 @@ public class UserClass {
                                     but it is more advisable to have sex 2 or a day before your ovulation day, or a day or
                                      two after, or even on the ovulation day, this days have a very high chance for conception 
                                      to occur...
-                        
+                                    
+                                    [<1>] Back  [<2>] Exit
                         """);
+                        String userResponse = input.next();
+                        while (!userResponse.matches("[1-2]")){
+                            System.out.println("Invalid Input\n [<1>] Back    [<2>] Exit");
+                            userResponse = input.next();
+                        }
+                        switch (userResponse){
+                            case "1":
+                                displayOutPut();
+                                break;
+                            case "2":
+                                System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
+                                break;
+                        }
                 break;
 
 
