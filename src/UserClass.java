@@ -8,59 +8,20 @@ public class UserClass {
 
     public void setDate(){
         boolean condition = true;
-         boolean condition1 = true;
-        int day = 0;
-        int month = 0;
-        int year = 0;
-        while(condition1){
-            try {
-                while (condition) {
+                        while (condition) {
                   try {
-                    System.out.println("Enter   Year ");
-                    year = input.nextInt();
+                    System.out.println("Enter the date when your previous Period stated (dd/mm/yyyy)");
+                    String lastPeriodDate = input.next();
+                    validateDateFormat(lastPeriodDate);
+                    String[] array = lastPeriodDate.split("/");
+                    checkUserDateFormat(array);
+                    date = new DateClass(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
                     condition = false;
-
-                 }catch (InputMismatchException e) {
-                    System.out.println("Enter A Valid input ");
+                 }catch (Exception e) {
+                    System.out.println(e.getMessage());
                     input.next();
                   }
                 }
-
-                condition = true;
-
-                 while (condition) {
-                      try {
-                                 System.out.println("Enter The Month You Saw Your Period ");
-                              month = input.nextInt();
-                                condition = false;
-
-                      } catch (InputMismatchException e) {
-                              System.out.println("Enter A Valid input ");
-                             input.next();
-                     }
-                 }
-                             condition = true;
-                 while (condition) {
-                        try {
-                                System.out.println("Enter The Day You Saw Your Period ");
-                                      day = input.nextInt();
-                                    condition = false;
-                        } catch (InputMismatchException e) {
-                             System.out.println("Enter A Valid input ");
-                                     input.next();
-                        }
-                 }
-
-                  date = new DateClass(day, month, year);
-                 condition1 = false;
-            }catch(IllegalArgumentException e){
-              //  input.next();
-                 System.out.println("IllegalArgumentException: " + e.getMessage());
-                System.out.println("Enter Year ");
-                year = input.nextInt();
-
-            }
-        }
     }
 
     public void collectMenstrualCycleInput(){
@@ -185,7 +146,7 @@ public class UserClass {
                                 (1) Your Safe Period During Your Menstrual Cycle....
                                     (2)Your Fertile Window....
                                         (3)Know More About Menstrual Cycle....
-                                            (4) Skip.....
+                                            (4) ExitApp.....
                             ===========================================================              
                          
                             """);
@@ -295,5 +256,26 @@ public class UserClass {
 
         }
         System.out.println("Thank You For Using Our Application\n It's Was A useful App Right??\n tell Your Friends About My MenstrualCycle Tracker");
+    }
+    private static void checkUserDateFormat(String[] array){
+        for(String string: array){
+            if(!string.matches("[0-9]+"))throw new IllegalArgumentException("Invalid Input");
+        }
+    }
+    private static void validateDateFormat(String date){
+        for(int count = 0; count<date.length();count++){
+            if(!contain(date.charAt(count)))throw new IllegalArgumentException("Invalid date format");
+        }
+
+    }
+
+    private static boolean contain(char character) {
+        boolean condition = true;
+        char[] array = {'0','1','2','3','4','5','6','7','8','9','/'};
+        for(int count = 0 ; count<array.length;count++) if(array[count] == character) {
+            condition = true;
+            break;
+        }
+        return condition;
     }
 }
